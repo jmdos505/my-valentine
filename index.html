@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für meinen Valentin ❤️</title>
+    <style>
+        /* Grundlegendes Design */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fdf2f8; /* Hellrosa Hintergrund */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Verhindert Scrollen, wenn Button riesig wird */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Das Bild oben */
+        .gif-container img {
+            max-width: 100%;
+            height: 200px; /* Feste Höhe, damit es gut aussieht */
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Der Text */
+        h1 {
+            color: #be185d;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        /* Container für die Knöpfe */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Button Design */
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        /* JA Button */
+        #yesBtn {
+            background-color: #22c55e; /* Grün */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* NEIN Button */
+        #noBtn {
+            background-color: #ef4444; /* Rot */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="gif-container">
+    <img id="mainImage" src="berti.jpeg" alt="Cute Bear">
+</div>
+
+<h1>Will you be my Valentine Berti?</h1>
+
+<div class="buttons">
+    <button id="yesBtn" onclick="clickYes()">Yes</button>
+    <button id="noBtn" onclick="clickNo()">No</button>
+</div>
+
+<script>
+    let yesSize = 18; // Startgröße der Schrift
+    let count = 0; // Zähler für Klicks
+
+    function clickNo() {
+        count++;
+
+        // Schriftgröße des Ja-Buttons erhöhen
+        yesSize += 15;
+        const yesBtn = document.getElementById("yesBtn");
+        yesBtn.style.fontSize = yesSize + "px";
+
+        // Padding auch leicht erhöhen, damit der Button proportional wächst
+        yesBtn.style.padding = (yesSize * 0.6) + "px " + (yesSize * 1.2) + "px";
+
+        // Optional: Text auf dem Nein-Button ändern, um lustig zu sein
+        const noBtn = document.getElementById("noBtn");
+        const phrases = ["No", "Are you sure?", "Really sure?", "Think again!", "Last chance!", "Surely not?", "You might regret this!", "Give it another thought!", "Are you absolutely certain?", "This could be a mistake!", "Have a heart!", "Don't be so cold!", "Change of heart?", "Wouldn't you reconsider?", "Is that your final answer?", "You're breaking my heart ;("];
+
+        // Text ändern (Modulo sorgt dafür, dass es sich wiederholt, wenn die Liste zu Ende ist)
+        if (count < phrases.length) {
+            noBtn.innerText = phrases[count];
+        } else {
+            noBtn.innerText = "Please :(";
+        }
+    }
+
+    function clickYes() {
+        // Alles entfernen und Sieges-Bild anzeigen
+        document.body.innerHTML = `
+                <div style="text-align: center;">
+                    <img src="jonas.jpg" style="height: 250px; border-radius: 10px;">
+                    <h1 style="color: #be185d; margin-top: 20px;">Juhu! Ich wusste es! ❤️</h1>
+                </div>
+            `;
+    }
+</script>
+</body>
+</html>
